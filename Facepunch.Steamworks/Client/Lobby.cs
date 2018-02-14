@@ -556,6 +556,17 @@ namespace Facepunch.Steamworks
         {
             return client.native.matchmaking.InviteUserToLobby( CurrentLobby, friendID );
         }
+        
+         /// <summary>
+        /// Opens the steam overlay to invite players to your lobby if your in one
+        /// </summary>
+        public void InviteUserToLobbyOverlay()
+        {
+            if (CurrentLobby == 0)
+                return;
+
+            client.native.friends.ActivateGameOverlayInviteDialog(CurrentLobby);
+        }
 
         internal void OnUserInvitedToLobbyAPI( LobbyInvite_t callback )
         {
