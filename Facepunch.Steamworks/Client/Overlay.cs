@@ -37,11 +37,25 @@ namespace Facepunch.Steamworks
         public void OpenTrade( ulong steamid ) { OpenUserPage( "jointrade", steamid ); }
         public void OpenStats( ulong steamid ) { OpenUserPage( "stats", steamid ); }
         public void OpenAchievements( ulong steamid ) { OpenUserPage( "achievements", steamid ); }
+        public void OpenFriendsList( ulong steamid ) { OpenUserPage( "friends", steamid ); }
         public void AddFriend( ulong steamid ) { OpenUserPage( "friendadd", steamid ); }
         public void RemoveFriend( ulong steamid ) { OpenUserPage( "friendremove", steamid ); }
         public void AcceptFriendRequest( ulong steamid ) { OpenUserPage( "friendrequestaccept", steamid ); }
         public void IgnoreFriendRequest( ulong steamid ) { OpenUserPage( "friendrequestignore", steamid ); }
 
         public void OpenUrl( string url ) { client.native.friends.ActivateGameOverlayToWebPage( url ); }
+        
+        public void SetOverlayNorificationPosition(NotificationPosition notificationPosition)
+        {
+            client.native.utils.SetOverlayNotificationPosition((SteamNative.NotificationPosition)notificationPosition);
+        }
+            
+        public enum NotificationPosition
+        {
+            TopLeft = 0,
+            TopRight = 1,
+            BottomLeft = 2,
+            BottomRight = 3,
+        }
     }
 }
