@@ -24,6 +24,11 @@ namespace Facepunch.Steamworks
             client.native.userstats.RequestCurrentStats();
         }
 
+        public void UpdateUserStats( ulong steamid )
+        {
+            client.native.userstats.RequestUserStats( steamid );
+        }
+
         public void UpdateGlobalStats( int days = 1 )
         {
             client.native.userstats.GetNumberOfCurrentPlayers();
@@ -38,6 +43,13 @@ namespace Facepunch.Steamworks
             return data;
         }
 
+        public int GetUserInt( ulong steamid, string name )
+        {
+            int data = 0;
+            client.native.userstats.GetUserStat( steamid, name, out data );
+            return data;
+        }
+
         public long GetGlobalInt( string name )
         {
             long data = 0;
@@ -49,6 +61,13 @@ namespace Facepunch.Steamworks
         {
             float data = 0;
             client.native.userstats.GetStat0( name, out data );
+            return data;
+        }
+
+        public float GetUserFloat( ulong steamid, string name )
+        {
+            float data = 0;
+            client.native.userstats.GetUserStat0( steamid, name, out data );
             return data;
         }
 
