@@ -356,6 +356,8 @@ namespace Facepunch.Steamworks
 
             return f;
         }
+        
+        public void SetPlayedWith(ulong steamid) { client.native.friends.SetPlayedWith(steamid); }
 
         private void OnPersonaStateChange( PersonaStateChange_t data )
         {
